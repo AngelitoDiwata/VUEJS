@@ -22,7 +22,7 @@ import Todos from "./components/Todo";
 export default {
   name: "app",
   components: {
-    Todos
+    Todos 
   },
   data() {
     return {
