@@ -1,10 +1,16 @@
 ﻿<template>
 <div id="Todos">
     <div id="main_todoList" v-bind:key="todo.id" v-for="(todo, index) in todos">
-        <div>
-            <li v-bind:class="'todo' + todo.id">{{todo.text}}<div  class="deleteBtn"> <button v-bind:id="todo.id"  v-on:click="deleteTodos(index)" class="btn btn-primary">Done!</button></div></li>
-        </div>
-    <br>
+            <div>
+                <transition name="fade">
+                    <li v-bind:class="'todo' + todo.id">
+                        {{todo.text}} <br><br>
+                        <div  class="deleteBtn"> <button v-bind:id="todo.id"  v-on:click="deleteTodos(index)" class="btn btn-primary">
+                            <i id="doneBtn" class="material-icons"> check_circle</i></button>
+                        </div>
+                    </li>    
+                </transition> 
+            </div>
     </div>
 </div>
     
@@ -25,14 +31,34 @@ export default {
 <style scoped>
 #Todos{
     padding: 10px;
-    height: 500px;
+    height: 30%;
     overflow: auto;
 }
-.deleteBtn{
+.btn-primary{
     float: right;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+     padding: 0px; 
+}
+
+#doneBtn{
+     font-size: 305%;
+     color:rgb(12, 231, 247)
 }
 
 li{
-    margin: 10px;
+    padding: 5%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 0px black;
+    margin: 20px;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: all 1s ease;
+}
+
+.fade-enter, .fade-leave-to/* .fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
 }
 </style>

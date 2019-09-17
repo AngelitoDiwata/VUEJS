@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Todos v-bind:todos="todos" />
-    <br>
     <div class="form-group">
       <label for="exampleInputEmail1">Input todo title</label>
       <input
@@ -13,7 +12,11 @@
         ref="todoTitle"
       />
     </div>
-    <button id="submitBtn" type="submit" v-on:click="addTodos" class="btn btn-primary">Submit</button>
+    <center>
+    <button id="submitBtn" type="submit" v-on:click="addTodos" class="btn btn-primary"><i id="addBtn" class="material-icons">
+add_circle
+</i></button>
+    </center>
   </div>
 </template>
 
@@ -64,12 +67,36 @@ body {
   line-height: 1.4;
 }
 
+.form-group{
+  margin: 0 auto;
+  
+  margin-top: 10%;
+  width: 70%;
+}
+
 #app{
   width: 100%;
-  padding: 10px;
+  padding: 20px;
 }
 
 #submitBtn{
-  float: right;
+  margin-top: 10%;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  padding: 0px; 
+}
+
+#addBtn{
+  font-size: 99px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: all 1s ease;
+}
+
+.fade-enter, .fade-leave-to/* .fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
 }
 </style>
