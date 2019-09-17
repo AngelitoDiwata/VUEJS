@@ -1,28 +1,75 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Todos v-bind:todos="todos" />
+    <br>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Input todo title</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter todo title here..."
+        ref="todoTitle"
+      />
+    </div>
+    <button id="submitBtn" type="submit" v-on:click="addTodos" class="btn btn-primary">Submit</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Todos from "./components/Todo";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    Todos
+  },
+  data() {
+    return {
+      todos: [
+        {
+          id: 1,
+          text: "one object"
+        },
+        {
+          id: 2,
+          text: "two objects"
+        },
+        {
+          id: 3,
+          text: "three objects"
+        }
+      ]
+    };
+  },
+
+  methods: {
+    addTodos: function() {
+      let todoValue = this.$refs.todoTitle.value;
+      this.todos.push({ id: this.todos.length + 1, text: todoValue });
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.4;
+}
+
+#app{
+  width: 100%;
+  padding: 10px;
+}
+
+#submitBtn{
+  float: right;
 }
 </style>
