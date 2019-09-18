@@ -2,21 +2,17 @@
   <div id="app">
     <Todos v-bind:todos="todos" />
     <div class="form-group">
+      <div class="controls">
       <label for="exampleInputEmail1">Input todo title</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        placeholder="Enter todo title here..."
-        ref="todoTitle"
-      />
-    </div>
-    <center>
+       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ref="todoTitle"></textarea>
+       <center>
     <button id="submitBtn" type="submit" v-on:click="addTodos" class="btn btn-primary"><i id="addBtn" class="material-icons">
 add_circle
 </i></button>
     </center>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -61,6 +57,19 @@ export default {
   margin: 0;
   padding: 0;
 }
+::-webkit-scrollbar {
+    width: 10px;
+    height: 2em
+}
+::-webkit-scrollbar-button {
+    background: dodgerblue
+}
+::-webkit-scrollbar-track-piece {
+    background: #eee
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(12, 231, 247)
+}​
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -68,15 +77,22 @@ body {
 }
 
 .form-group{
-  margin: 0 auto;
-  
-  margin-top: 10%;
+  width: 100%;
+  bottom: 100px;
+  position: fixed;
+}
+
+.controls{
+   margin: 0 auto;
+   position: relative;
   width: 70%;
+  left: -15px;
 }
 
 #app{
   width: 100%;
   padding: 20px;
+  position: relative;
 }
 
 #submitBtn{

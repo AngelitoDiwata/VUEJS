@@ -5,11 +5,12 @@
                 <transition name="fade">
                     <li v-bind:class="'todo' + todo.id">
                         {{todo.text}} <br><br>
-                        <div  class="deleteBtn"> <button v-bind:id="todo.id"  v-on:click="deleteTodos(index)" class="btn btn-primary">
+                        <div  class="deleteBtn"> <button v-bind:id="todo.id"  @click="deleteTodos(index)" class="btn btn-primary">
                             <i id="doneBtn" class="material-icons"> check_circle</i></button>
                         </div>
                     </li>    
-                </transition> 
+                </transition>
+                <br>
             </div>
     </div>
 </div>
@@ -29,11 +30,19 @@ export default {
 </script>
 
 <style scoped>
+
 #Todos{
-    padding: 10px;
-    height: 30%;
+    padding: 0px;
+    width: 100%;
+    height: 400px;
     overflow: auto;
 }
+
+.todo pre{
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
 .btn-primary{
     float: right;
     width: 50px;
@@ -44,7 +53,7 @@ export default {
 
 #doneBtn{
      font-size: 305%;
-     color:rgb(12, 231, 247)
+     color:rgb(12, 231, 247);
 }
 
 li{
