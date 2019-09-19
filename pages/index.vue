@@ -1,78 +1,41 @@
 <template>
   <div class="container">
-    <navBar class="navBar"/>
-    <Todos class="todoList" v-bind:todos="todoData" />
-    <addSection />
+    <anywhereNavbar />
+    <div v-bind:key="counted.title" v-for="ite in counted">
+
+  <div class="card" style="width: 100%;">
+  <div class="card-body">
+    
+        <h1 :count="ite" class="card-title">{{ ite.title }}</h1>
+        <br>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+    </div>
+
+  <increment />
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import BootstrapVue from 'bootstrap-vue'
-  import 'bootstrap/dist/css/bootstrap.css';
-  import 'bootstrap-vue/dist/bootstrap-vue.css'
-  import Todos from '../components/todos';
-  import navBar from '../components/navbar';
-  import addSection from '../components/addSection';
+import increment from "../components/increment";
+import anywhereNavbar from "../components/anywhereNavbar";
 export default {
   components: {
-      Todos,
-      navBar,
-      addSection
+    anywhereNavbar,
+    increment
   },
-  mounted() {
-  
-     this.$root.$on('onAdd', () => {
-       alert('hehehe');
-     })
-   
-  },
-  data(){
-      return {
-        todoData: [
-        {
-          id: 1,
-          text: "1 object",
-          subtasks: [
-            {desc: 'Finish'},
-            {desc: 'This'},
-            {desc: 'Now'}
-          ]
-        },
-        {
-          id: 2,
-          text: "2 objects",
-          subtasks: [
-            {desc: '2Finish'},
-            {desc: '2This'},
-            {desc: '2Now'}
-          ]
-        },
-        {
-          id: 3,
-          text: "three objects",
-          subtasks: [
-            {desc: '3Finish'},
-            {desc: '3This'},
-            {desc: '3Now'}
-          ]
-        }
-      ]
-      }
+  computed: {
+    counted(){
+      return this.$store.state.counter
+    }
   }
 }
 </script>
 
 <style scoped>
-.navBar{
-  top: 0px;
-  left: 0px;
-  position:fixed;
-  z-index: 2;
-  background-color: rgb(37, 37, 37);
-  width: 100%;
-}
-.todoList{
-  margin-bottom: 50%;
-}
+
 </style>

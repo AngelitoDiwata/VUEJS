@@ -1,19 +1,8 @@
 <template>
-  <div class="container">
-    <Todos/>
+  <div>
     <nuxt />
   </div>
 </template>
-
-<script>
-import Todos from '../components/todos';
-export default {
-  components: {
-      Todos
-  }
-}
-</script>
-
 
 <style>
 html {
