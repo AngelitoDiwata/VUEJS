@@ -1,22 +1,40 @@
 ﻿export const state = () => ({
-    counter: ''
+    result: 0
 })
 
 export const mutations = {
-    increment(state, aData) {
-        state.counter = aData
+    addition(state, mSum) {
+        state.result = mSum
     },
-    decrement(state) {
-        state.counter--
+    subtraction(state, mDiff) {
+        state.result = mDiff
     },
-    multiply(state) {
-        state.counter *= state.counter
+    multiplication(state, mProd) {
+        state.result = mProd
+    },
+    division(state, mQuot) {
+        state.result = mQuot
     }
 }
 export const actions = {
-    increment(context) {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(response => response.json())
-            .then(json => context.commit('increment', json))
+    addition(context, mCurrentVal) {
+        let mHold = state.result
+        let mSum = mCurrentVal + mHold
+        context.commit('addition', mSum)
+    },
+    subtraction(context, mCurrentVal) {
+        let mHold = state.result
+        let mDiff = mCurrentVal - mHold
+        context.commit('subtraction', mDiff)
+    },
+    multiplication(context, mCurrentVal) {
+        let mHold = state.result
+        let mProd = mCurrentVal * mHold
+        context.commit('multiplication', mProd)
+    },
+    division(context, mCurrentVal) {
+        let mHold = state.result
+        let mQuot = mCurrentVal / mHold
+        context.commit('division', mQuot)
     }
 }
