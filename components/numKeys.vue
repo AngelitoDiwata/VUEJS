@@ -1,16 +1,16 @@
 ﻿<template>
     <div id="wrapper">
        <div class="numContainer">
-        <a id="btn7" class="waves-effect waves-light blue btn" @click="btn('btn7')">7</a>
-        <a id="btn8" class="waves-effect waves-light blue btn" @click="btn('btn8')">8</a>
-        <a id="btn9" class="waves-effect waves-light blue btn" @click="btn('btn9')">9</a><br><br>
-        <a id="btn4" class="waves-effect waves-light blue btn" @click="btn('btn4')">4</a>
-        <a id="btn5" class="waves-effect waves-light blue btn" @click="btn('btn5')">5</a>
-        <a id="btn6" class="waves-effect waves-light blue btn" @click="btn('btn6')">6</a><br><br>
-        <a id="btn1" class="waves-effect waves-light blue btn" @click="btn('btn1')">1</a>
-        <a id="btn2" class="waves-effect waves-light blue btn" @click="btn('btn2')">2</a>
-        <a id="btn3" class="waves-effect waves-light blue btn" @click="btn('btn3')">3</a><br><br>
-        <a id="btn0" class="waves-effect waves-light blue btn" @click="btn('btn0')">0</a>
+        <a id="btn7" class="waves-effect waves-light blue btn" @click="btn('btn', '7')">7</a>
+        <a id="btn8" class="waves-effect waves-light blue btn" @click="btn('btn', '8')">8</a>
+        <a id="btn9" class="waves-effect waves-light blue btn" @click="btn('btn', '9')">9</a><br><br>
+        <a id="btn4" class="waves-effect waves-light blue btn" @click="btn('btn', '4')">4</a>
+        <a id="btn5" class="waves-effect waves-light blue btn" @click="btn('btn', '5')">5</a>
+        <a id="btn6" class="waves-effect waves-light blue btn" @click="btn('btn', '6')">6</a><br><br>
+        <a id="btn1" class="waves-effect waves-light blue btn" @click="btn('btn', '1')">1</a>
+        <a id="btn2" class="waves-effect waves-light blue btn" @click="btn('btn', '2')">2</a>
+        <a id="btn3" class="waves-effect waves-light blue btn" @click="btn('btn', '3')">3</a><br><br>
+        <a id="btn0" class="waves-effect waves-light blue btn" @click="btn('btn', '0')">0</a>
          <a id="btnadd" class="btn-floating btn-large waves-effect waves-light red"  @click="btn('addition')"><i class="material-icons">add</i></a>
          <a id="btnsub" class="btn-floating btn-large waves-effect waves-light red"  @click="btn('subtraction')"><i class="material-icons">remove</i></a>
          <a id="btnmul" class="btn-floating btn-large waves-effect waves-light red"  @click="btn('multiplication')"><i class="material-icons">clear</i></a>
@@ -24,8 +24,8 @@
 export default {
   name: "numKeys",
   methods: {
-    btn(btnNo) {
-      this.$store.dispatch(btnNo);
+    btn(btnNo, value) {
+      this.$store.dispatch(btnNo, value);
     }
   }
 };
